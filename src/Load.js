@@ -16,16 +16,22 @@ class Load extends Phaser.Scene {
             // loadingBar.destroy();
         // });
 
-        // this.load.path = './assets/';
+        this.load.path = './assets/';
         // load graphics assets
-        this.load.spritesheet('Player', './assets/Dragone.png',{
+        this.load.spritesheet('Player', 'img/Dragone.png',{
             frameWidth: 64});
         // this.load.spritesheet('Player', './assets/cars.png', {
             // frameWidth: 10 });
-        this.load.image('Background', './assets/background.png');
-        this.load.image('Floor', './assets/floor.png');
-        this.load.image('Foreground', './assets/foreground.png');
-        this.load.image('Void', './assets/void.png');
+        this.load.image('Background', 'img/background.png');
+        this.load.image('Floor', 'img/floor.png');
+        this.load.image('Foreground', 'img/foreground.png');
+        this.load.image('Void', 'img/void.png');
+
+        // loading audio    
+        this.load.audio('BGM', 'sfx/bell-cave.wav');
+        this.load.audio('FIRE_BLAST', 'sfx/dragon-breathes-fire-1-191085.wav');
+        this.load.audio('frogus', 'sfx/frog-85649.wav')
+        this.load.audio('FURY','sfx/dragon-roar-high-intensity-36564.wav')
     }
 
     create() {

@@ -24,7 +24,7 @@ let config = {
     physics: {
         default: 'arcade',
         arcade:{
-            debug: false,
+            debug: true,
         },
     },
     scene: [ Load , Play ]
@@ -37,4 +37,4 @@ let borderPadding = borderUISize / 3
 let { height, width } = game.config
 
 // reserve keyboard bindings
-let keyFIRE, keyRESET, keyLEFT, keyRIGHT
+// let keyFIRE, keyRESET, keyLEFT, keyRIGHT
