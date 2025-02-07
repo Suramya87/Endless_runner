@@ -5,12 +5,6 @@
 
 "use strict"
 
-// let config = {
-    // type: Phaser.AUTO, 
-    // scene: [ MainMenu, Play],
-// }
-
-// let game = new Phaser.Game(config)
 
 let config = {
     type: Phaser.AUTO,
@@ -37,4 +31,4 @@ let borderPadding = borderUISize / 3
 let { height, width } = game.config
 
 // reserve keyboard bindings
-// let keyFIRE, keyRESET, keyLEFT, keyRIGHT
+let keyFIRE, keyRESET, keyLEFT, keyRIGHT

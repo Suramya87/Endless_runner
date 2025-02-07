@@ -15,8 +15,8 @@ class GameOver extends Phaser.Scene {
             fontFamily: 'Arial'
         }).setOrigin(0.5);
 
-        // // Show high score
-        this.add.text(width / 2, height / 2 + 50, `High Score: ${this.score}s`, {
+        // // Show high scorethis.scoreText.setText('Score: ' + Math.floor(this.score));
+        this.add.text(width / 2, height / 2 + 50, `High Score: ${Math.floor(this.score)}m`, {
             fontSize: '32px',
             fill: '#00ff00',
             fontFamily: 'Arial'

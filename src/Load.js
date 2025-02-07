@@ -22,6 +22,8 @@ class Load extends Phaser.Scene {
             frameWidth: 64});
         this.load.spritesheet('FROG', 'img/frog.png', {
             frameWidth: 64 });
+        this.load.spritesheet('FIRE_BALL', 'img/Fire_Blast.png', {
+            frameWidth: 400 });
         this.load.image('Background', 'img/background.png');
         this.load.image('Floor', 'img/floor.png');
         this.load.image('Foreground', 'img/foreground.png');
