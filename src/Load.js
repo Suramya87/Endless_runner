@@ -20,8 +20,8 @@ class Load extends Phaser.Scene {
         // load graphics assets
         this.load.spritesheet('Player', 'img/Dragone.png',{
             frameWidth: 64});
-        // this.load.spritesheet('Player', './assets/cars.png', {
-            // frameWidth: 10 });
+        this.load.spritesheet('FROG', 'img/frog.png', {
+            frameWidth: 64 });
         this.load.image('Background', 'img/background.png');
         this.load.image('Floor', 'img/floor.png');
         this.load.image('Foreground', 'img/foreground.png');
