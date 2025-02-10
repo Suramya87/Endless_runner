@@ -20,8 +20,8 @@ class Load extends Phaser.Scene {
         // load graphics assets
         this.load.spritesheet('Player', 'img/Dragone.png',{
             frameWidth: 64});
-        this.load.spritesheet('FROG', 'img/frog.png', {
-            frameWidth: 64 });
+        this.load.spritesheet('enemy', 'img/enemy_2.0.png', {
+            frameWidth: 100 });
         this.load.spritesheet('FIRE_BALL', 'img/Fire_Blast.png', {
             frameWidth: 400 });
         this.load.image('Background', 'img/background.png');

@@ -10,9 +10,13 @@ class Play extends Phaser.Scene {
         this.PLAYER_VELOCITY = 200;
         this.playerBullets;
         this.BULLET_SPEED = 500;
+        this.COOLDOWN_TIME = 3000;
+        // this.isShooting = true;
+        this.isOnCooldown = false;
     }
 
     create() {
+        // this.isOnCooldown = false;
         this.cursors = this.input.keyboard.createCursorKeys();
         this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         this.bgm = this.sound.add('BGM', {
@@ -135,16 +139,44 @@ class Play extends Phaser.Scene {
         this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
     }
 
+    // shootBullet() {
+    //     if (this.isShooting) return;
+
+    //     this.isShooting = true;
+    //     const bullet = this.playerBullets.create(this.player.x + 55, this.player.y - 15, 'FIRE_BALL', 5).setScale(0.25);
+    //     bullet.play('fire_blast');
+    //     bullet.setVelocityX(this.BULLET_SPEED);
+    //     bullet.setCollideWorldBounds(true);
+    //     bullet.body.onWorldBounds = true;
+
+    //     bullet.body.world.on('worldbounds', (body) => {
+    //         if (body.gameObject === bullet) {
+    //             bullet.destroy();
+    //             // console.log('bye')
+    //         }
+    //     });
+
+    //     this.player.play('BAAA');
+    //     this.shot.play();
+
+    //     // Reset shooting cooldown after a short delay
+    //     this.time.delayedCall(300, () => {
+    //         this.isShooting = false;
+    // });
+    // }
+
     shootBullet() {
-        if (this.isShooting) return;
+        if (this.isShooting || this.isOnCooldown) return;
 
         this.isShooting = true;
+        this.isOnCooldown = true;
+    
         const bullet = this.playerBullets.create(this.player.x + 55, this.player.y - 15, 'FIRE_BALL', 5).setScale(0.25);
         bullet.play('fire_blast');
         bullet.setVelocityX(this.BULLET_SPEED);
         bullet.setCollideWorldBounds(true);
         bullet.body.onWorldBounds = true;
-
+    
         bullet.body.world.on('worldbounds', (body) => {
             if (body.gameObject === bullet) {
                 bullet.destroy();
@@ -155,10 +187,13 @@ class Play extends Phaser.Scene {
         this.player.play('BAAA');
         this.shot.play();
 
-        // Reset shooting cooldown after a short delay
         this.time.delayedCall(300, () => {
             this.isShooting = false;
-    });
+        });
+ 
+        this.time.delayedCall(this.COOLDOWN_TIME, () => {
+            this.isOnCooldown = false;
+        });
     }
 
     hitEnemy(bullet, enemy) {
