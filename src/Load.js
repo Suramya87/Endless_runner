@@ -31,8 +31,9 @@ class Load extends Phaser.Scene {
 
         // loading audio    
         this.load.audio('BGM', 'sfx/bell-cave.wav');
-        this.load.audio('FIRE_BLAST', 'sfx/dragon-breathes-fire-1-191085.wav');
-        this.load.audio('frogus', 'sfx/frog-85649.wav')
+        this.load.audio('FIRE_BLAST', 'sfx/Blast.mp3');
+        this.load.audio('FIRE_SHOT', 'sfx/shot_sound.wav');
+        this.load.audio('frogus', 'sfx/Froog.mp3')
         this.load.audio('FURY','sfx/dragon-roar-high-intensity-36564.wav')
     }
 
