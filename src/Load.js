@@ -29,12 +29,18 @@ class Load extends Phaser.Scene {
         this.load.image('Foreground', 'img/foreground.png');
         this.load.image('Void', 'img/void.png');
 
+        // this.load.image('menuBackground', 'img/menu.png');
+        this.load.image('menuHaze', 'img/haze.png');
+        this.load.image('menu1', 'img/back spikes.png');
+        this.load.image('menufog', 'img/fog.png');
+        this.load.image('menu2', 'img/fornt spikes.png');
+
         // loading audio    
         this.load.audio('BGM', 'sfx/bell-cave.wav');
         this.load.audio('FIRE_BLAST', 'sfx/Blast.mp3');
         this.load.audio('FIRE_SHOT', 'sfx/shot_sound.wav');
         this.load.audio('frogus', 'sfx/Froog.mp3')
-        this.load.audio('FURY','sfx/dragon-roar-high-intensity-36564.wav')
+        this.load.audio('SNIP', 'sfx/Bat_shoot.mp3')
     }
 
     create() {
@@ -46,6 +52,6 @@ class Load extends Phaser.Scene {
         }
 
         // go to Title scene
-        this.scene.start('playScene');
+        this.scene.start('menuScene');
     }
 }

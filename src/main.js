@@ -1,6 +1,17 @@
-// Code Practice: Making a Scene
+// Code Practice: Just Blast em
 // Name: Suramya Shakya
 // Date: 02/5/2025
+
+// I think this took me about 25 - 30 hours maybe more its kinda hard to tell but for sure its atleast 25
+
+
+
+// I wanna say i spent a lot of time making 
+// the assets as I think the fire ball looked 
+// really cool and it was fun drawing fire in pixel art
+// 
+// I also think the use of pointerover was something I am proud of for the little parts 
+// and teh tutorial, its not teh best but I feel like it was the best I could have done in this time
 
 
 "use strict"
@@ -18,10 +29,10 @@ let config = {
     physics: {
         default: 'arcade',
         arcade:{
-            debug: true,
+            debug: false,
         },
     },
-    scene: [ Load , Play, EnemyScene, GameOver ]
+    scene: [ Load , MenuScene, TutorialScene,Credits, Play, EnemyScene, GameOver ]
   }
 
 let game = new Phaser.Game(config)

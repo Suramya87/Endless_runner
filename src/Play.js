@@ -2,6 +2,7 @@ class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
         this.Gaming = true;
+        this.gameSpeed = 0;
     }
 
     init() {
@@ -11,7 +12,6 @@ class Play extends Phaser.Scene {
         this.playerBullets;
         this.BULLET_SPEED = 500;
         this.COOLDOWN_TIME = 3000;
-        // this.isShooting = true;
         this.isOnCooldown = false;
     }
 
@@ -139,31 +139,6 @@ class Play extends Phaser.Scene {
         this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
     }
 
-    // shootBullet() {
-    //     if (this.isShooting) return;
-
-    //     this.isShooting = true;
-    //     const bullet = this.playerBullets.create(this.player.x + 55, this.player.y - 15, 'FIRE_BALL', 5).setScale(0.25);
-    //     bullet.play('fire_blast');
-    //     bullet.setVelocityX(this.BULLET_SPEED);
-    //     bullet.setCollideWorldBounds(true);
-    //     bullet.body.onWorldBounds = true;
-
-    //     bullet.body.world.on('worldbounds', (body) => {
-    //         if (body.gameObject === bullet) {
-    //             bullet.destroy();
-    //             // console.log('bye')
-    //         }
-    //     });
-
-    //     this.player.play('BAAA');
-    //     this.shot.play();
-
-    //     // Reset shooting cooldown after a short delay
-    //     this.time.delayedCall(300, () => {
-    //         this.isShooting = false;
-    // });
-    // }
 
     shootBullet() {
         if (this.isShooting || this.isOnCooldown) return;
@@ -213,10 +188,7 @@ class Play extends Phaser.Scene {
         // bullet.destroy();
         enemy.destroy();
     
-        // this.createExplosion(enemy.x, enemy.y);
-    
-        // this.score += 10; 
-        // this.scoreText.setText('Score: ' + Math.floor(this.score));
+
     }
 
 
@@ -265,9 +237,17 @@ class Play extends Phaser.Scene {
         this.scoreText.setText('Score: ' + Math.floor(this.score));
         this.gameSpeed += 0.00025;
 
+
         if (!this.Gaming) {
-            this.bgm.stop()
+            this.bgm.stop();
             this.Gaming = true;
+        
+            // Check and update high score
+            const savedHighScore = localStorage.getItem('highScore') || 0;
+            if (this.score > savedHighScore) {
+                localStorage.setItem('highScore', Math.floor(this.score));
+            }
+        
             this.scene.start('gameOver', { score: this.score });
         }
 

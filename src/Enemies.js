@@ -11,6 +11,12 @@ class EnemyScene extends Phaser.Scene {
     }
 
     create() {
+        this.snip = this.sound.add('SNIP', {
+            mute: false,
+            volume: 1,
+            rate: 1,
+            loop: false
+        });
         this.froog = this.sound.add('frogus', {
             mute: false,
             volume: 1,
@@ -76,7 +82,7 @@ class EnemyScene extends Phaser.Scene {
 
         // Spawn the new enemy type
         this.time.addEvent({
-            delay: 5000, // Spawn after 5 seconds
+            delay: 5000, 
             callback: this.spawnNewEnemy,
             callbackScope: this,
             loop: true // Spawn repeatedly
@@ -155,7 +161,7 @@ class EnemyScene extends Phaser.Scene {
             delay: 2000, // Shoot every 2 seconds
             callback: () => {
                 if (enemy.active && enemy.followingPlayer) {
-                    this.froog.play();
+                    this.snip.play();
                     this.shootStraightBullet(enemy);
                 }
             },
@@ -197,7 +203,7 @@ class EnemyScene extends Phaser.Scene {
     }
 
     shootStraightBullet(enemy) {
-        const bullet = this.enemyBullets.create(enemy.x, enemy.y, 'enemy', 10);
+        const bullet = this.enemyBullets.create(enemy.x, enemy.y, 'enemy', 10).setScale(2);
         bullet.setSize(4, 4);
         bullet.play('bat_bullet');
         // bullet.setScale(0.5);

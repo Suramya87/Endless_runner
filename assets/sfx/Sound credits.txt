@@ -1,11 +1,10 @@
 Sound credits
+bell cave bgm - https://freesound.org/people/ADnova/sounds/475300/
 
 fire blast - https://pixabay.com/sound-effects/dragon-breathes-fire-1-191085/
-https://pixabay.com/sound-effects/dragon-roar-high-intensity-36564/
 
 shot sound https://freesound.org/people/LiamG_SFX/sounds/334234/
+
 frogus - https://pixabay.com/sound-effects/frog-85649/
 
-frog spawn 1 - https://pixabay.com/sound-effects/frog-croak-ambient-70548/
-
-frog spawn 2 -https://pixabay.com/sound-effects/frog-croaking-type-2-293314/
+bat_shoot - https://pixabay.com/sound-effects/sword-slash-02-266315/
