@@ -113,6 +113,7 @@ class Play extends Phaser.Scene {
 
         const PLAYER = () => {
             this.player = this.physics.add.sprite(width / 6, height / 2, 'Player', 1).setScale(3);
+            this.player.setCollideWorldBounds(true);
             this.player.setSize(32, 32).setOffset(16, 12);
             this.player.body.setBounce(2);
         };
