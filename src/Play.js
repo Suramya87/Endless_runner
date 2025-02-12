@@ -5,10 +5,10 @@ class Play extends Phaser.Scene {
         this.gameSpeed = 0;
     }
 
-    init() {
+    init(data) {
         this.gameSpeed = 0;
         this.score = 0;
-        this.PLAYER_VELOCITY = 200;
+        this.PLAYER_VELOCITY =  data.playerSpeed || 400;
         this.playerBullets;
         this.BULLET_SPEED = 500;
         this.COOLDOWN_TIME = 3000;
@@ -212,7 +212,7 @@ class Play extends Phaser.Scene {
         this.FOREGROUND.tilePositionX += 5 + (5 * this.gameSpeed);
 
         let playerVector = new Phaser.Math.Vector2(0, 0);
-        playerVector.y = 0.01;
+        playerVector.y = 0.1;
 
         if (!this.isShooting) {
             if (this.cursors.up.isDown) {

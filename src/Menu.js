@@ -4,7 +4,6 @@ class MenuScene extends Phaser.Scene {
     }
 
     create() {
-        // this.BG = this.add.tileSprite(0, 0, 640, 480,'menuBackground').setOrigin(0, 0).setScale(2);
         this.HAZE = this.add.tileSprite(0, 0, 640, 480,'menuHaze').setOrigin(0, 0).setScale(2);
         this.SPIKES1 = this.add.tileSprite(0, 0, 640, 480,'menu1').setOrigin(0, 0).setScale(2);
         this.FOG = this.add.tileSprite(0, 0, 640, 480,'menufog').setOrigin(0, 0).setScale(2);
@@ -15,10 +14,6 @@ class MenuScene extends Phaser.Scene {
             fill: '#fff',
             fontStyle: 'bold'
         }).setOrigin(0.5);
-
-
-
-        // Adding buttons
 
         const tutorialButton = this.add.text(this.cameras.main.centerX, 450, 'Tutorial', {
             fontSize: '32px',
@@ -36,15 +31,14 @@ class MenuScene extends Phaser.Scene {
             tutorialButton.setStyle({ fill: '#fff' });
         });
 
-
         const startButton = this.add.text(this.cameras.main.centerX, 550, 'Start Game', {
             fontSize: '32px',
             fill: '#fff',
             fontStyle: 'bold'
         }).setOrigin(0.5).setInteractive();
-        
+
         startButton.on('pointerdown', () => {
-            this.scene.start('playScene');
+            this.showDifficultyPopup();
         });
 
         startButton.on('pointerover', () => {
@@ -60,11 +54,11 @@ class MenuScene extends Phaser.Scene {
             fill: '#fff',
             fontStyle: 'bold'
         }).setOrigin(0.5).setInteractive();
-        
+
         creditsButton.on('pointerdown', () => {
             this.scene.start('creditsScene');
         });
-        
+
         creditsButton.on('pointerover', () => {
             creditsButton.setStyle({ fill: '#ff0' });
         });
@@ -73,21 +67,50 @@ class MenuScene extends Phaser.Scene {
         });
     }
 
+    showDifficultyPopup() {
+        const popup = this.add.rectangle(this.cameras.main.centerX, this.cameras.main.centerY, 400, 300, 0x000000, 0.8);
+        const text = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 70, 'Select Difficulty', {
+            fontSize: '32px',
+            fill: '#fff',
+            fontStyle: 'bold'
+        }).setOrigin(0.5);
 
+        const normalButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY - 10, 'Normal', {
+            fontSize: '28px',
+            fill: '#fff'
+        }).setOrigin(0.5).setInteractive();
 
-    
+        const glueButton = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY + 50, 'Glue in Wings', {
+            fontSize: '28px',
+            fill: '#fff'
+        }).setOrigin(0.5).setInteractive();
 
-    update() {
-        // this.BG.tilePositionX += 1
-        this.HAZE.tilePositionX += 0.5
-        this.SPIKES1.tilePositionX += 0.4
-        this.FOG.tilePositionX += 0.7
-        this.SPIKES2.tilePositionX += 1
+        const cleanup = () => {
+            popup.destroy();
+            text.destroy();
+            normalButton.destroy();
+            glueButton.destroy();
+        };
 
+        normalButton.on('pointerdown', () => {
+            cleanup();
+            this.scene.start('playScene', { playerSpeed: 400 });
+        });
 
+        glueButton.on('pointerdown', () => {
+            cleanup();
+            this.scene.start('playScene', { playerSpeed: 200 });
+        });
     }
 
+    update() {
+        this.HAZE.tilePositionX += 0.5;
+        this.SPIKES1.tilePositionX += 0.4;
+        this.FOG.tilePositionX += 0.7;
+        this.SPIKES2.tilePositionX += 1;
+    }
 }
+
 class Credits extends Phaser.Scene {
     constructor() {
         super("creditsScene");
@@ -142,4 +165,3 @@ class Credits extends Phaser.Scene {
         });
     }
 }
-
