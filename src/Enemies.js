@@ -222,7 +222,7 @@ class EnemyScene extends Phaser.Scene {
 
     hitPlayer() {
         this.playScene.Gaming = false;
-        console.log('Player hit!');
+        // console.log('Player hit!');
         this.scene.stop();
     }
 
